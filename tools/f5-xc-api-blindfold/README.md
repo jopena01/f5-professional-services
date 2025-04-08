@@ -13,7 +13,7 @@
    - Python 3.7+
    - `vesctl` CLI (F5 Distributed Cloud CLI)
    - `openssl`
-   - `tkinter` (for GUI file picker)
+   - `tkinter` 
 
 2. **Download the script**  
    Save the Python script locally (e.g., `blindfold-xc-tool.py`).

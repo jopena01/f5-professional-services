@@ -11,7 +11,7 @@ import tkinter as tk
 from tkinter import filedialog
 
 # ----------------------------------------------------------------------
-# Hard-coded file names (allowed):
+# File names:
 # ----------------------------------------------------------------------
 SECRETS_YAML = "secrets.yaml"
 PUBLIC_KEY_PEM = "pubkey.pem"
@@ -19,7 +19,7 @@ BLINDFOLDED_JSON = "blindfolded-secret.json"
 POLICY_JSON = "policy.json"
 
 # ----------------------------------------------------------------------
-# 1) Safely decode base64
+# 1) Decode base64
 # ----------------------------------------------------------------------
 def decode_b64(encoded_str):
     """
@@ -103,7 +103,7 @@ def fetch_public_key(p12_path, p12_password):
         return False
 
 # ----------------------------------------------------------------------
-# 4) Always fetch fresh policy.json with vesctl
+# 4) Fetch fresh policy.json with vesctl
 # ----------------------------------------------------------------------
 def fetch_policy_document(p12_path, namespace, name, p12_password):
     """
@@ -188,7 +188,7 @@ def encrypt_with_vesctl(plaintext):
             os.remove(tmp_path)
 
 # ----------------------------------------------------------------------
-# 6) Decrypt & Validate All Keys (Optional Testing Step)
+# 6) Validate All Keys 
 # ----------------------------------------------------------------------
 def decrypt_and_validate_all(p12_bundle_path):
     """
@@ -256,7 +256,7 @@ def decrypt_and_validate_all(p12_bundle_path):
 # ----------------------------------------------------------------------
 def main():
     print("==========================================")
-    print("  🔐 F5 XC Blindfolded Secret Generator   ")
+    print("  🔐 F5 XC API Secrets Blindfolding   ")
     print("==========================================\n")
 
     # 1) .p12 path

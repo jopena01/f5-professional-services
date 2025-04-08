@@ -256,7 +256,7 @@ def decrypt_and_validate_all(p12_bundle_path):
 # ----------------------------------------------------------------------
 def main():
     print("==========================================")
-    print("  🔐 F5 XC API Secrets Blindfolding   ")
+    print("  🔐 F5 XC API Secrets Blindfold Tool   ")
     print("==========================================\n")
 
     # 1) .p12 path

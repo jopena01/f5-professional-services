@@ -81,7 +81,7 @@ def fetch_public_key(p12_path, p12_password):
     :return: True if success; False otherwise.
     """
     os.environ["VES_P12_PASSWORD"] = p12_password
-    print(f"⏳ Fetching fresh public key -> {PUBLIC_KEY_PEM} ...")
+    print(f" Fetching fresh public key -> {PUBLIC_KEY_PEM} ...")
     try:
         proc = subprocess.run(
             [
@@ -95,7 +95,7 @@ def fetch_public_key(p12_path, p12_password):
         )
         with open(PUBLIC_KEY_PEM, "w", encoding="utf-8") as f:
             f.write(proc.stdout)
-        print(f"✅ Wrote new public key to {PUBLIC_KEY_PEM}\n")
+        print(f"- Wrote new public key to {PUBLIC_KEY_PEM}\n")
         return True
     except subprocess.CalledProcessError as e:
         print("❌ Failed to fetch public key.\n")
@@ -119,7 +119,7 @@ def fetch_policy_document(p12_path, namespace, name, p12_password):
     # Ensure environment var so vesctl sees it
     os.environ["VES_P12_PASSWORD"] = p12_password
 
-    print(f"⏳ Fetching fresh policy document -> {POLICY_JSON} ...")
+    print(f"Fetching fresh policy document -> {POLICY_JSON} ...")
     try:
         proc = subprocess.run(
             [
@@ -135,7 +135,7 @@ def fetch_policy_document(p12_path, namespace, name, p12_password):
         )
         with open(POLICY_JSON, "w", encoding="utf-8") as f:
             f.write(proc.stdout)
-        print(f"✅ Wrote new policy document to {POLICY_JSON}\n")
+        print(f"- Wrote new policy document to {POLICY_JSON}\n")
         return True
     except subprocess.CalledProcessError as e:
         stderr_lower = e.stderr.lower()
@@ -317,7 +317,7 @@ def main():
     namespace_in_yaml = secret_yaml["metadata"]["namespace"]
     secret_content = {}
 
-    print(f"\n🔐 Processing secrets from {SECRETS_YAML}...\n")
+    print(f"\nProcessing secrets from {SECRETS_YAML}...\n")
 
     for key, val_b64 in data_fields.items():
         decoded_value = decode_b64(val_b64)
@@ -348,7 +348,7 @@ def main():
     with open(BLINDFOLDED_JSON, "w", encoding="utf-8") as f:
         json.dump(final_bundle, f, indent=2)
 
-    print(f"\n✅ Wrote blindfolded bundle -> {BLINDFOLDED_JSON}")
+    print(f"\n- Wrote blindfolded bundle -> {BLINDFOLDED_JSON}")
 
     # 8) Optional: Decrypt & Validate
     decrypt_and_validate_all(p12_path)

@@ -198,7 +198,7 @@ def decrypt_and_validate_all(p12_bundle_path):
     :param p12_bundle_path: Path to the .p12 credential bundle (str)
     :return: None
     """
-    print("\n Validating each encrypted key by attempting decryption...\n")
+    print("\n Validating each encrypted key...\n")
     try:
         with open(BLINDFOLDED_JSON, "r", encoding="utf-8") as f:
             bundle = json.load(f)
